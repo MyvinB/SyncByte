@@ -1,0 +1,42 @@
+
+
+
+
+  <div class="container"  align="center" style="max-width:350px;">
+    <h3>Login</h3>
+    <form  [formGroup]="signInForm" (ngSubmit)="onSubmit()"  >
+      <div class="form-group">
+        <label for="employeeId">EmployeeId</label>
+        <input type="text" id="employeeId" class="form-control"  formControlName="employeeId"
+        [ngClass]="{'is-invalid': submitted && f.employeeId.errors}" />
+        <div *ngIf="submitted && f?.employeeId.errors" class="invalid-feedback">
+          <div *ngIf="f?.employeeId.errors.required" style="color: red;">EmployeeId is required</div>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control"  formControlName="password"
+        [ngClass]="{'is-invalid': submitted && f.password.errors}" />
+         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f?.password.errors.required" style="color: red;">Password is required</div>
+          <div *ngIf="f?.password.errors.minlength" style="color: red;">Password must be at least 6 characters</div>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <button id ="login" class="btn btn-primary">Login</button>
+        <div *ngIf="isLoginFailed" class="alert alert-danger">
+          Login failed: {{errorMessage}}
+        </div>
+      </div>
+    </form>
+
+
+
+
+</div>
+
+
+
+

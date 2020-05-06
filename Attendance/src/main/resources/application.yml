@@ -1,0 +1,21 @@
+spring:
+   application:
+      name: Attendance
+
+
+
+   datasource:
+      url: jdbc:mysql://database-1.cfbx4qcoiayd.ap-south-1.rds.amazonaws.com:3306/attendance?autoReconnect=true&useSSL=false
+      username: root
+      password: root12345
+      driver-class-name: com.mysql.jdbc.Driver
+   jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+
+
+
+
+server:
+  port: 8081

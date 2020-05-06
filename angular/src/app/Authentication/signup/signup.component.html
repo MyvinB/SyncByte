@@ -1,0 +1,78 @@
+
+
+
+    <div class="container"  align="center">
+      <div  style="max-width:350px; " >
+          <h3 *ngIf=!this.employeeIdToSend>Employee Registration </h3>
+          <h3 *ngIf=this.employeeIdToSend>Employee Updation </h3>
+      <hr>
+      <div *ngIf="isSignedUp;">
+          Your registration is successful. Please login!
+        </div>
+          <div *ngIf=" isSignUpFailed" class="alert alert-warning">
+              Signup failed!<br/>{{errorMessage}}
+            </div>
+        <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()" >
+
+
+          <div class="form-group">
+            <label for="empCode" style="text-align:left">Employee Code</label>
+            <input type="text" id="empCode" class="form-control" [(ngModel)]="employeeId" formControlName="empCode" [ngClass]="{'is-invalid': submitted && f.empCode.errors}" />
+            <div *ngIf="submitted && f.empCode.errors" class="invalid-feedback">
+              <div *ngIf="f.empCode.errors.required" style="color: red;text-align: left;">Employee Code is required</div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          <div class="form-group">
+            <label for="name" style="text-align:left">Name</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="empName" formControlName="name" [ngClass]="{'is-invalid': submitted && f.name.errors}" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required" style="color: red;text-align: left;">Name is required</div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="password" style="text-align:left">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password"  [ngClass]="{'is-invalid': submitted && f.password.errors}"/>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+               <div *ngIf="f.password.errors.required"  style="color: red;text-align: left;">Password is required</div>
+              <div *ngIf="f.password.errors.minlength" style="color: red;text-align: left;">Password must be at least 6 characters</div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="Date" style="text-align:left">Date</label>
+            <input type="text"
+            formControlName="date"
+            class="form-control"
+            bsDatepicker
+            [ngClass]="{'is-invalid': submitted && f.date.errors}">
+            <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+               <div *ngIf="f.date.errors.required"  style="color: red;text-align: left;">Date is required</div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button *ngIf="!this.employeeIdToSend" id="signup" class="btn btn-primary float-right">Register</button>
+            <button *ngIf="this.employeeIdToSend" id="signup" class="btn btn-primary float-right">Update</button>
+          </div>
+
+        </form>
+
+
+
+
+
+      </div>
+    </div>

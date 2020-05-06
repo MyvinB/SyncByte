@@ -1,0 +1,19 @@
+<a style="float: right; margin-right: 30px; margin-top: 1rem" [download]="csvFileName" [href]="getCSVDownloadLink()"><i class="fas fa-download fa-5x"></i></a>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">CheckIn</th>
+        <th scope="col">CheckOut</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let i of trueTimeList">
+      <tr>
+        <td>{{i.checkIn}}</td>
+        <td>{{i.checkOut}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

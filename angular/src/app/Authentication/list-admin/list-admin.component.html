@@ -1,0 +1,30 @@
+
+
+<a style="margin-left : 11rem" routerLink="/signup" class="btn btn-success">Create a User</a>
+<a style="float: right; margin-right: 30px; margin-top: 1rem" [download]="csvFileName" [href]="getCSVDownloadLink()"><i class="fas fa-download fa-5x"></i></a>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">EmployeeCode</th>
+        <th scope="col">Name</th>
+        <th scope="col">D.O.B</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let i of employeeList ; let p =index">
+      <tr>
+        <td>{{i.employeeId}}</td>
+        <td>{{i.empName}}</td>
+        <td>{{i.dateOfBirth}}</td>
+        <td>
+            <a  style="margin-left:5px;" class="btn btn-primary" [routerLink]="['/list',i.employeeId]">Reports</a>
+            <a style="margin-left:5px;" class="btn btn-primary" [routerLink]="['/signup',i.employeeId]">Update</a>
+           <button style="margin-left:5px;" type="button" class="btn btn-outline-secondary"(click)="delete(i.employeeId,p)">Delete</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
